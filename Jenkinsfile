@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                withAWS(credentials: 'aws-creds', region: 'us-east-2') {
                 sh 'python3 bucket.py'
               }
            }
