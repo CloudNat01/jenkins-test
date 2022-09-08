@@ -7,7 +7,7 @@
                                            
 import boto3
 
-sess= boto3.Session(region_name='us-east-1')
+sess= boto3.Session(region_name='us-east-2')
 s3client = sess.client('s3')
 bucket_name='prudential-s3'
 s3_location={
