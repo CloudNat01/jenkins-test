@@ -5,12 +5,26 @@
 # s3 = boto3.client("s3")
 # s3.create_bucket(Bucket="loveth-oballe-buck-xl")
                                            
-import boto3
+# import boto3
 
-sess= boto3.Session(region_name='us-east-2')
-s3client = sess.client('s3')
-bucket_name='prudential-s3'
-s3_location={
-    'LocationConstraint': 'us-east-1'
+# sess= boto3.Session(region_name='us-east-2')
+# s3client = sess.client('s3')
+# bucket_name='prudential-s3'
+# s3_location={
+#     'LocationConstraint': 'us-east-1'
+# }
+# s3client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=s3_location)
+
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                withAWS(credentials: 'aws-creds', region: 'us-east-2') {
+                sh 'python3 bucket.py'
+              }
+           }
+        }
+    }
 }
-s3client.create_bucket(Bucket=bucket_name, CreateBucketConfiguration=s3_location)
