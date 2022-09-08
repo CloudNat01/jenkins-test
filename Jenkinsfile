@@ -1,5 +1,9 @@
-stage('build') {
-    steps {
-        sh 'python3 bucket.py'
+pipeline {
+    agent any
+    
+    stage('build') {
+        steps {
+            sh 'python3 bucket.py'
+        }
     }
 }
